@@ -1,26 +1,26 @@
 import { useNavigate, useParams } from "react-router-dom";
-import getMarkdownFile from "./lib/getMarkdownFile";
-import ReactMarkdown from "react-markdown";
 import { Button } from "@mui/material";
-import { useQuery } from "react-query";
-import Loading from "../../components/Loading";
-export default function BlogDetail({}) {
-  const { title } = useParams();
-
+import Neijuan from "./blogs/1.mdx";
+const MDXFiles: { [key: string]: any } = {
+  "1": Neijuan,
+};
+export default function BlogDetail() {
+  const { id } = useParams(); // 获取路由参数
   const navigate = useNavigate();
+  if (id === undefined) {
+    return <></>;
+  }
 
-  const { isLoading, data: markdownFileContent } = useQuery(
-    ["markdown-bucket", `${title}`],
-    () => getMarkdownFile({ title })
-  );
+  const MDXContent = MDXFiles[id];
+
+  if (!MDXContent) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      <Loading isLoading={isLoading} />
-      <div className="flex mx-auto w-2/3 flex-col p-8">
-        {markdownFileContent ? (
-          <ReactMarkdown>{markdownFileContent}</ReactMarkdown>
-        ) : null}
+      <div className="prose prose-lg mx-auto">
+        <MDXContent />
       </div>
       <Button
         onClick={() => navigate(-1)}

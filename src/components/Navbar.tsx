@@ -25,8 +25,14 @@ export default function Navbar() {
           backgroundColor: "white",
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            display: "felx",
+            justifyContent: "space-between",
+          }}
+        >
           <Link to={"/"}>Home</Link>
+          <Link to={"/contact"}>Contact</Link>
         </Toolbar>
       </AppBar>
     </>

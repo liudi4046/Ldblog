@@ -1,0 +1,19 @@
+import { useState } from "react";
+
+# Hello, MDX!
+
+**Bold**
+This is an example of an MDX document.
+
+Here's a button with state:
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <button onClick={() => setCount(count + 1)}>Clicked {count} times</button>
+  );
+}
+
+<Counter />;
+```

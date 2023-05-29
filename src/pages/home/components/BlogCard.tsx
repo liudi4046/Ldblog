@@ -5,16 +5,16 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { MarkdownFileOverview } from "../types";
+import { BlogCardInfo } from "../types";
 import { useNavigate } from "react-router-dom";
 export default function BlogCard({
-  MarkdownFileOverview,
+  BlogCardInfo,
 }: {
-  MarkdownFileOverview: MarkdownFileOverview;
+  BlogCardInfo: BlogCardInfo;
 }) {
   const navigate = useNavigate();
   const viewBlogDetail = () => {
-    navigate(`/blog/${MarkdownFileOverview.title}`);
+    navigate(`/blog/${BlogCardInfo.id}`);
   };
   return (
     <Card sx={{ maxWidth: 345, flexGrow: 1 }}>
@@ -25,10 +25,10 @@ export default function BlogCard({
           component="div"
           className="text-center"
         >
-          {MarkdownFileOverview.title}
+          {BlogCardInfo.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {MarkdownFileOverview.description}
+          {BlogCardInfo.description}
         </Typography>
       </CardContent>
       <CardActions>

@@ -1,19 +1,19 @@
 import { Grid } from "@mui/material";
-import { MarkdownFileOverview } from "../types";
+import { BlogCardInfo } from "../types";
 import BlogCard from "./BlogCard";
 
 export default function BlogCardsContainer({
-  markdownFileOverviews,
+  BlogOverviews,
 }: {
-  markdownFileOverviews: MarkdownFileOverview[];
+  BlogOverviews: BlogCardInfo[];
 }) {
   return (
     <Grid container spacing={3}>
-      {markdownFileOverviews.map((overview) => {
+      {BlogOverviews.map((overview) => {
         return (
-          <Grid item xs={4} key={overview.id}>
+          <Grid item xs={4} key={overview.title}>
             <div className="flex justify-center">
-              <BlogCard MarkdownFileOverview={overview} />
+              <BlogCard BlogCardInfo={overview} />
             </div>
           </Grid>
         );

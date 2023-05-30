@@ -1,27 +1,48 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
-import Neijuan from "./blogs/1.mdx";
-const MDXFiles: { [key: string]: any } = {
-  "1": Neijuan,
+import { useMutation, useQueries, useQuery } from "react-query";
+import { supabase } from "../../App";
+import Loading from "../../components/Loading";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import ErrorPage from "../../components/ErrorPage";
+const getBlogContent = async (id: string) => {
+  let { data: MarkdownFileContent, error } = await supabase
+    .from("MarkdownFiles")
+    .select("content")
+    .eq("id", id);
+  if (error) {
+    throw error;
+  }
+
+  return (MarkdownFileContent?.[0] ?? { content: "" }).content;
 };
+
 export default function BlogDetail() {
   const { id } = useParams(); // 获取路由参数
-  const navigate = useNavigate();
   if (id === undefined) {
     return <></>;
   }
-
-  const MDXContent = MDXFiles[id];
-
-  if (!MDXContent) {
-    return <div>Loading...</div>;
-  }
+  const {
+    data: content,
+    isLoading,
+    error,
+  } = useQuery(["select", "content", "markdownFiles", id], () =>
+    getBlogContent(id)
+  );
+  const navigate = useNavigate();
 
   return (
     <>
-      <div className="prose prose-lg mx-auto">
-        <MDXContent />
-      </div>
+      <Loading isLoading={isLoading} />
+      <ErrorPage error={error} />
+      {content ? (
+        <div className="border-4 w-1/2 h-full prose max-w-none p-3 mx-auto">
+          <ReactMarkdown>{content}</ReactMarkdown>
+        </div>
+      ) : (
+        !isLoading && <div>无内容</div>
+      )}
+
       <Button
         onClick={() => navigate(-1)}
         sx={{

@@ -18,6 +18,7 @@ export const supabase = createClient<Database>(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuanNrdXN5cXpleGt3b2hubHViIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ5OTY3MzMsImV4cCI6MjAwMDU3MjczM30.ewGk7LZTCBtZvydtiC6yM2sRFv4GEFP9Z__AbQNsGw0"
 );
 import { Helmet } from "react-helmet";
+import CreateBlog from "./pages/createBlog";
 
 const queryClient = new QueryClient();
 type MdxComponentProps = {
@@ -31,12 +32,13 @@ function App() {
         <Route index element={<Home />} />
         <Route path="blog/:id" element={<BlogDetail />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="create-blog" element={<CreateBlog />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )
   );
   return (
-    <div className="">
+    <>
       <Helmet>
         <title>LdBlog</title>
         <meta name="description" content="Helmet application" />
@@ -44,7 +46,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
-    </div>
+    </>
   );
 }
 

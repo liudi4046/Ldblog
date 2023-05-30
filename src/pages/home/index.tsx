@@ -1,10 +1,11 @@
+import { useQuery } from "react-query";
 import BlogCardsContainer from "./components/BlogCardsContainer";
-import blogsOverview from "./data/blogsOverview.json";
+import { supabase } from "../../App";
 
 export default function Home() {
   return (
     <>
-      <BlogCardsContainer BlogOverviews={blogsOverview} />
+      <BlogCardsContainer />
     </>
   );
 }

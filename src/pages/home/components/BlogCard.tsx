@@ -5,7 +5,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { BlogCardInfo } from "../types";
+import { BlogCardInfo } from "../../../types";
 import { useNavigate } from "react-router-dom";
 export default function BlogCard({
   BlogCardInfo,

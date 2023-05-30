@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { MarkdownFileOverview } from "../home/types";
+import { MarkdownFileOverview } from "../../types";
 export default function littleThoughts() {
   const { isLoading, data: markdownFileOverviews } = useQuery<
     MarkdownFileOverview[]

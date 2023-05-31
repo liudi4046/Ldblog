@@ -22,9 +22,6 @@ import CreateBlog from "./pages/createBlog";
 import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
-type MdxComponentProps = {
-  children: React.ReactNode;
-};
 
 function App() {
   const router = createBrowserRouter(

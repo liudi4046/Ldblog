@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
-import { useMutation, useQueries, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { supabase } from "../../App";
 import Loading from "../../components/Loading";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";

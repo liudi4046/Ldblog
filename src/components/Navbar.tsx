@@ -34,7 +34,8 @@ export default function Navbar() {
           <Link to={"/"}>Home</Link>
           <div className="flex gap-5">
             <Link to={"/contact"}>Contact</Link>
-            <Link to={"/create-blog"}>Create Blog</Link>
+            <Link to={"/create-blog"}>Create</Link>
+            <Link to={"/signup"}>SignUP</Link>
           </div>
         </Toolbar>
       </AppBar>

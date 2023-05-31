@@ -74,12 +74,12 @@ export default function CreateBlog() {
 
       <div className="flex h-[450px] w-full ">
         <textarea
-          className="border-4 w-1/2 h-full p-3"
+          className="border-2 w-1/2 h-full p-3"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
 
-        <div className="border-4 w-1/2 h-full prose max-w-none p-3">
+        <div className="border-2 w-1/2 h-full prose max-w-none p-3">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </div>

@@ -36,7 +36,7 @@ export default function BlogDetail() {
       <Loading isLoading={isLoading} />
       <ErrorPage error={error} />
       {content ? (
-        <div className="border-4 w-1/2 h-full prose max-w-none p-3 mx-auto">
+        <div className="border-2 w-1/2 h-full prose max-w-none p-3 mx-auto">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       ) : (

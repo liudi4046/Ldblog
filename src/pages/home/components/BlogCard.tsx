@@ -17,7 +17,15 @@ export default function BlogCard({
     navigate(`/blog/${BlogCardInfo.id}`);
   };
   return (
-    <Card sx={{ maxWidth: 345, flexGrow: 1 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
       <CardContent>
         <Typography
           gutterBottom

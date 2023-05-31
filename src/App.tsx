@@ -19,6 +19,7 @@ export const supabase = createClient<Database>(
 );
 import { Helmet } from "react-helmet";
 import CreateBlog from "./pages/createBlog";
+import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 type MdxComponentProps = {
@@ -33,6 +34,7 @@ function App() {
         <Route path="blog/:id" element={<BlogDetail />} />
         <Route path="contact" element={<Contact />} />
         <Route path="create-blog" element={<CreateBlog />} />
+        <Route path="signup" element={<Auth />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )

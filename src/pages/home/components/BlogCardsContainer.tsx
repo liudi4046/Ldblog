@@ -28,7 +28,7 @@ export default function BlogCardsContainer() {
         {BlogOverviews.map((overview) => {
           return (
             <Grid item xs={4} key={overview.title}>
-              <div className="flex justify-center">
+              <div className="flex justify-center h-full">
                 <BlogCard BlogCardInfo={overview} />
               </div>
             </Grid>

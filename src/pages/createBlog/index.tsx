@@ -4,6 +4,7 @@ import { Button, TextField } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import { useMutation } from "react-query";
 import { supabase } from "../../App";
+
 export interface Blog {
   title: string;
   description: string;

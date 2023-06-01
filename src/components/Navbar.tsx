@@ -26,7 +26,7 @@ export default function Navbar() {
           <div className="flex gap-5">
             <Link to={"/contact"}>Contact</Link>
             <Link to={"/create-blog"}>Create</Link>
-            <Link to={"/signup"}>SignUP</Link>
+            <Link to={"/signup"}>SignUp</Link>
           </div>
         </Toolbar>
       </AppBar>

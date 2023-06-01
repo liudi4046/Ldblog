@@ -9,25 +9,32 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      MarkdownFilesOverview: {
+      MarkdownFiles: {
         Row: {
-          created_at: string
+          content: string | null
+          created_at: string | null
           description: string | null
           id: number
           title: string | null
+          user_id: string | null
         }
         Insert: {
-          created_at?: string
+          content?: string | null
+          created_at?: string | null
           description?: string | null
           id?: number
           title?: string | null
+          user_id?: string | null
         }
         Update: {
-          created_at?: string
+          content?: string | null
+          created_at?: string | null
           description?: string | null
           id?: number
           title?: string | null
+          user_id?: string | null
         }
+        Relationships: []
       }
     }
     Views: {
@@ -44,3 +51,4 @@ export interface Database {
     }
   }
 }
+

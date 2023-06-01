@@ -4,16 +4,19 @@ import { Button, TextField } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import { useMutation } from "react-query";
 import { supabase } from "../../App";
+import { useUser } from "../../context/UserProvider";
 
 export interface Blog {
   title: string;
   description: string;
   content: string;
+  user_id: string;
 }
-const generateBlog = async ({ title, description, content }: Blog) => {
+
+const generateBlog = async ({ title, description, content, user_id }: Blog) => {
   let { data: MarkdownFiles, error } = await supabase
     .from("MarkdownFiles")
-    .insert([{ title, description, content }]);
+    .insert([{ title, description, content, user_id }]);
   if (error) {
     throw error;
   }
@@ -21,6 +24,7 @@ const generateBlog = async ({ title, description, content }: Blog) => {
   return MarkdownFiles;
 };
 export default function CreateBlog() {
+  const { curUser } = useUser();
   const [content, setContent] = useState("");
   const {
     mutate: mutateCreateBlog,
@@ -47,8 +51,12 @@ export default function CreateBlog() {
       description: e.target.value,
     });
   };
+
   const handleCreateBlog = () => {
-    mutateCreateBlog({ ...blogInfo, content });
+    if (!curUser) {
+      return;
+    }
+    mutateCreateBlog({ ...blogInfo, content, user_id: curUser?.id });
   };
 
   console.log("error", error);

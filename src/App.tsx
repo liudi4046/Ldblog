@@ -20,9 +20,11 @@ export const supabase = createClient<Database>(
 import { Helmet } from "react-helmet";
 import CreateBlog from "./pages/createBlog";
 import Auth from "./pages/Auth";
+import { createContext } from "react";
+import UserProvider from "./context/UserProvider";
 
 const queryClient = new QueryClient();
-
+export const UserContext = createContext(null);
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -36,15 +38,18 @@ function App() {
       </Route>
     )
   );
+
   return (
     <>
       <Helmet>
         <title>LdBlog</title>
         <meta name="description" content="Helmet application" />
       </Helmet>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      <UserProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </UserProvider>
     </>
   );
 }

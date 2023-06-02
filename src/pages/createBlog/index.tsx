@@ -88,7 +88,7 @@ export default function CreateBlog() {
           onChange={(e) => setContent(e.target.value)}
         />
 
-        <div className="border-2 w-1/2 h-full prose max-w-none p-3">
+        <div className="border-2 w-1/2 h-full prose max-w-none p-3 overflow-auto">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </div>

@@ -12,27 +12,48 @@ export interface Database {
       MarkdownFiles: {
         Row: {
           content: string | null
-          created_at: string | null
+          created_at: string
           description: string | null
           id: number
           title: string | null
           user_id: string | null
+          views: number
         }
         Insert: {
           content?: string | null
-          created_at?: string | null
+          created_at?: string
           description?: string | null
           id?: number
           title?: string | null
           user_id?: string | null
+          views?: number
         }
         Update: {
           content?: string | null
-          created_at?: string | null
+          created_at?: string
           description?: string | null
           id?: number
           title?: string | null
           user_id?: string | null
+          views?: number
+        }
+        Relationships: []
+      }
+      websites_stats: {
+        Row: {
+          id: number
+          page: string | null
+          visited_at: string | null
+        }
+        Insert: {
+          id?: number
+          page?: string | null
+          visited_at?: string | null
+        }
+        Update: {
+          id?: number
+          page?: string | null
+          visited_at?: string | null
         }
         Relationships: []
       }
@@ -41,7 +62,12 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_blog_view: {
+        Args: {
+          blog_id: number
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

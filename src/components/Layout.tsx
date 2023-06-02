@@ -5,8 +5,8 @@ export default function Layout() {
   return (
     <div>
       <Navbar />
-      <br></br>
-      <div className="px-3">
+
+      <div className="px-3 mt-1">
         <Outlet />
       </div>
     </div>

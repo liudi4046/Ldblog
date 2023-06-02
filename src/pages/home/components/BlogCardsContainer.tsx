@@ -13,13 +13,16 @@ export default function BlogCardsContainer() {
     async () => {
       let { data: MarkdownFiles, error } = await supabase
         .from("MarkdownFiles")
-        .select("id,title,description");
+        .select("id,title,description,created_at")
+        .order("created_at", { ascending: false });
       if (error) {
         throw error;
       }
+      console.log(MarkdownFiles);
       setBlogOverviews([...(MarkdownFiles as BlogCardInfo[])]);
     }
   );
+
   return (
     <>
       <Loading isLoading={isLoading} />

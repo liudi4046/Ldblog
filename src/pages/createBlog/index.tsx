@@ -55,7 +55,7 @@ export default function CreateBlog() {
   const handleCreateBlog = () => {
     if (!curUser) {
       return;
-    } //123
+    } //1234
     mutateCreateBlog({ ...blogInfo, content, user_id: curUser?.id });
   };
 

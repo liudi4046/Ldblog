@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { supabase } from "../../../App";
 
 interface EditBlogSectionProps {
@@ -16,7 +16,7 @@ export default function EditBlogSection({
 }: EditBlogSectionProps) {
   const [curContent, setCurContent] = useState(blogContent);
   const queryClient = useQueryClient();
-  const { mutate: mutateUpdateBlog, error } = useMutation(updateBlogContent, {
+  const { mutate: mutateUpdateBlog } = useMutation(updateBlogContent, {
     onSuccess: () => {
       queryClient.invalidateQueries(["select", "content", "markdownFiles", id]);
       setIsEditSectionOpen(false);

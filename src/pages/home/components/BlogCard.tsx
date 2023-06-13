@@ -1,4 +1,4 @@
-import { Button, CardActions, CardContent, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Card } from "./Card";
 import { BlogCardInfo } from "../../../types";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ export default function BlogCard({
     .tz(BlogCardInfo.created_at, "Asia/Shanghai")
     .format("MM-DD HH:mm");
   return (
-    <Card>
+    <Card viewBlogDetail={viewBlogDetail}>
       <Typography
         gutterBottom
         variant="h5"
@@ -28,56 +28,7 @@ export default function BlogCard({
       <Typography variant="body2" textAlign={"center"} marginBottom={3}>
         {formattedDate}
       </Typography>
-      <Typography variant="body2" color="text.secondary">
-        {BlogCardInfo.description}
-      </Typography>
-
-      <Button
-        sx={{
-          marginLeft: "auto",
-        }}
-        size="small"
-        onClick={viewBlogDetail}
-      >
-        Read More
-      </Button>
+      <Typography variant="body2">{BlogCardInfo.description}</Typography>
     </Card>
-    // <Card
-    //   sx={{
-    //     maxWidth: 345,
-    //     flexGrow: 1,
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     justifyContent: "space-between",
-    //   }}
-    // >
-    //   <CardContent>
-    //     <Typography
-    //       gutterBottom
-    //       variant="h5"
-    //       component="div"
-    //       className="text-center"
-    //     >
-    //       {BlogCardInfo.title}
-    //     </Typography>
-    //     <Typography variant="body2" textAlign={"center"} marginBottom={3}>
-    //       {formattedDate}
-    //     </Typography>
-    //     <Typography variant="body2" color="text.secondary">
-    //       {BlogCardInfo.description}
-    //     </Typography>
-    //   </CardContent>
-    //   <CardActions>
-    //     <Button
-    //       sx={{
-    //         marginLeft: "auto",
-    //       }}
-    //       size="small"
-    //       onClick={viewBlogDetail}
-    //     >
-    //       Read More
-    //     </Button>
-    //   </CardActions>
-    // </Card>
   );
 }

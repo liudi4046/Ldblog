@@ -46,7 +46,7 @@ export default function BlogDetail() {
     ["select", "content", "markdownFiles", id],
     () => getBlog(parseInt(id)),
     {
-      onSuccess: async (blogData) => {
+      onSuccess: async () => {
         await supabase.rpc("increment_blog_view", {
           blog_id: parseInt(id),
         });
@@ -55,11 +55,8 @@ export default function BlogDetail() {
   );
   const navigate = useNavigate();
   const { curUser } = useUser();
-  const {
-    mutate: mutateDeleteBlog,
-    isLoading: isDeleteBlogLoading,
-    error: isDeleteBLogError,
-  } = useMutation(() => deleteBlog(blogData?.id as number, navigate));
+  const { mutate: mutateDeleteBlog, isLoading: isDeleteBlogLoading } =
+    useMutation(() => deleteBlog(blogData?.id as number, navigate));
 
   const editBlog = () => {
     setIsEditSectionOpen(!isEditSectionOpen);
@@ -77,7 +74,7 @@ export default function BlogDetail() {
       创建时间:{formattedDate}
       {blogData?.content ? (
         <div className="w-1/2 mx-auto">
-          <div className="border-2 w-full h-[550px] prose max-w-none p-3 overflow-auto">
+          <div className="border-2 w-full h-[550px] prose max-w-none p-3 overflow-auto prose-invert">
             {isEditSectionOpen ? (
               <EditBlogSection
                 blogContent={blogData.content}
@@ -92,8 +89,11 @@ export default function BlogDetail() {
             <Button
               disabled={curUser?.id !== blogData?.user_id}
               onClick={editBlog}
+              sx={{
+                color: "white",
+              }}
             >
-              编辑
+              edit
             </Button>
           </div>
         </div>
@@ -106,6 +106,7 @@ export default function BlogDetail() {
           position: "fixed",
           left: 0,
           bottom: 0,
+          color: "white",
         }}
       >
         Go Back
@@ -117,9 +118,10 @@ export default function BlogDetail() {
           position: "fixed",
           right: 0,
           bottom: 0,
+          color: "white",
         }}
       >
-        删除
+        Delete
       </Button>
     </>
   );

@@ -11,6 +11,7 @@ import { Database } from "./supabase";
 import BlogDetail from "./pages/blogDetail";
 import PageNotFound from "./components/PageNotFound";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Contact from "./pages/Contact";
 export const supabase = createClient<Database>(
@@ -25,6 +26,21 @@ import UserProvider from "./context/UserProvider";
 
 const queryClient = new QueryClient();
 export const UserContext = createContext(null);
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "black", // 设置为白色
+          color: "white",
+          "&:hover": {
+            backgroundColor: "#27272a",
+          },
+        },
+      },
+    },
+  },
+});
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -46,9 +62,11 @@ function App() {
         <meta name="description" content="Helmet application" />
       </Helmet>
       <UserProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
+        <ThemeProvider theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
+        </ThemeProvider>
       </UserProvider>
     </>
   );

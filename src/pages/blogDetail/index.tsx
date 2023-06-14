@@ -1,5 +1,5 @@
 import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useMutation, useQuery } from "react-query";
 import { supabase } from "../../App";
 import Loading from "../../components/Loading";
@@ -13,7 +13,7 @@ import moment from "moment-timezone";
 const getBlog = async (id: number) => {
   let { data: MarkdownFileContent, error } = await supabase
     .from("MarkdownFiles")
-    .select("content,user_id,id,views,created_at")
+    .select("content,user_id,id,views,created_at,title")
     .eq("id", id);
   if (error) {
     throw error;
@@ -69,12 +69,19 @@ export default function BlogDetail() {
     <>
       <Loading isLoading={isDeleteBlogLoading || isGetBlogLoading} />
       <ErrorPage error={isGetBlogError} />
-      访问次数:{blogData?.views}
+      <Typography textAlign={"right"}>访问次数:{blogData?.views}</Typography>
+
       <br />
-      创建时间:{formattedDate}
       {blogData?.content ? (
         <div className="w-1/2 mx-auto">
-          <div className="border-2 w-full h-[550px] prose max-w-none p-3 overflow-auto prose-invert">
+          <div className="flex flex-col gap-4 mb-4">
+            <Typography variant="h4" style={{ textAlign: "center" }}>
+              {blogData.title}
+            </Typography>
+            <Typography textAlign={"center"}>{formattedDate}</Typography>
+          </div>
+
+          <div className="w-full h-[550px] prose max-w-none p-3 prose-invert">
             {isEditSectionOpen ? (
               <EditBlogSection
                 blogContent={blogData.content}

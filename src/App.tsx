@@ -13,7 +13,7 @@ import PageNotFound from "./components/PageNotFound";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact";
 export const supabase = createClient<Database>(
   "https://znjskusyqzexkwohnlub.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpuanNrdXN5cXpleGt3b2hubHViIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ5OTY3MzMsImV4cCI6MjAwMDU3MjczM30.ewGk7LZTCBtZvydtiC6yM2sRFv4GEFP9Z__AbQNsGw0"
@@ -35,6 +35,34 @@ const theme = createTheme({
           color: "white",
           "&:hover": {
             backgroundColor: "#27272a",
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "white", // 设置标签字体颜色为白色
+          "&.Mui-focused": {
+            color: "white",
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "& .MuiInputBase-input": {
+            color: "white", // 设置输入框字体颜色为白色
+          },
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white", // 设置输入框边框颜色为白色
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white",
           },
         },
       },

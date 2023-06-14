@@ -82,13 +82,15 @@ export default function CreateBlog() {
       </div>
 
       <div className="flex h-[450px] w-full ">
-        <textarea
+        <TextField
+          multiline
           className="border-2 w-1/2 h-full p-3"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          rows={18}
         />
 
-        <div className="border-2 w-1/2 h-full prose max-w-none p-3 overflow-auto">
+        <div className="border-2 w-1/2 h-full prose max-w-none p-3 overflow-auto prose-invert">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </div>

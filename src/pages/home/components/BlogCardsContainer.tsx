@@ -13,7 +13,7 @@ export default function BlogCardsContainer() {
     async () => {
       let { data: MarkdownFiles, error } = await supabase
         .from("MarkdownFiles")
-        .select("id,title,description,created_at")
+        .select("id,title,description,created_at,views")
         .order("created_at", { ascending: false });
       if (error) {
         throw error;
@@ -25,7 +25,7 @@ export default function BlogCardsContainer() {
 
   return (
     <>
-      <Loading isLoading={isLoading} />
+      <Loading isLoading={isLoading || BlogOverviews.length === 0} />
       {error && <div>{(error as Error).message}</div>}
       <Grid container spacing={3}>
         {BlogOverviews.map((overview) => {

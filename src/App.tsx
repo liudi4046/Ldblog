@@ -20,9 +20,10 @@ export const supabase = createClient<Database>(
 );
 import { Helmet } from "react-helmet";
 import CreateBlog from "./pages/createBlog";
-import Auth from "./pages/Auth";
+import Auth from "./pages/auth";
 import { createContext } from "react";
 import UserProvider from "./context/UserProvider";
+import JourneyTimeLine from "./pages/timeLine";
 
 const queryClient = new QueryClient();
 export const UserContext = createContext(null);
@@ -78,6 +79,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="create-blog" element={<CreateBlog />} />
         <Route path="signup" element={<Auth />} />
+        <Route path="timeline" element={<JourneyTimeLine />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )

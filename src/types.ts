@@ -3,6 +3,7 @@ export interface BlogCardInfo {
   title: string;
   description: string;
   created_at: string;
+  views: number;
 }
 
 export interface MarkdownFileOverview {

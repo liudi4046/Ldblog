@@ -15,7 +15,7 @@ export const Card = ({ children, viewBlogDetail }: any) => {
     <motion.div
       onClick={viewBlogDetail}
       onMouseMove={onMouseMove}
-      className="p-3 cursor-pointer overflow-hidden relative duration-700 border rounded-xl bg-zinc-950 group md:gap-8 border-zinc-600 w-[300px] h-[200px] "
+      className="p-5 cursor-pointer overflow-hidden relative duration-700 border rounded-xl bg-zinc-950 group md:gap-8 border-zinc-600 w-[350px] h-[200px] "
       whileHover={{
         scale: 1.1,
         transition: {

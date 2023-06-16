@@ -16,6 +16,9 @@ export default function Navbar() {
         <Link to="/signup" className="hover:text-zinc-400">
           SignUp
         </Link>
+        <Link to="/timeline" className="hover:text-zinc-400">
+          TimeLine
+        </Link>
       </div>
     </div>
   );

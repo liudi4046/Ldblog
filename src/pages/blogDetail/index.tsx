@@ -9,6 +9,7 @@ import { useUser } from "../../context/UserProvider";
 import { useState } from "react";
 import EditBlogSection from "./components/EditBlogSection";
 import moment from "moment-timezone";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const getBlog = async (id: number) => {
   let { data: MarkdownFileContent, error } = await supabase
@@ -69,7 +70,10 @@ export default function BlogDetail() {
     <>
       <Loading isLoading={isDeleteBlogLoading || isGetBlogLoading} />
       <ErrorPage error={isGetBlogError} />
-      <Typography textAlign={"right"}>访问次数:{blogData?.views}</Typography>
+      <div className="flex w-fit ml-auto gap-1">
+        <VisibilityIcon fontSize="small" style={{ color: "gray" }} />
+        <p className="text-zinc-400 text-sm">{blogData?.views}</p>
+      </div>
 
       <br />
       {blogData?.content ? (

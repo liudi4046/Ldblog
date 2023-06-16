@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 export default function Layout() {
   return (
-    <div className="text-white bg-zinc-950 min-h-screen">
+    <div className="text-white min-h-screen">
       <Navbar />
 
       <div className="px-3 mt-1 pt-24 bg-zinc-950">

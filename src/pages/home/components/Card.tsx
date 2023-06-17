@@ -12,7 +12,6 @@ export const Card = ({
   BlogCardInfo: BlogCardInfo | undefined;
   isLoading: boolean;
 }) => {
-  console.log("BlogCardInfo", BlogCardInfo);
   const mouseX = useSpring(0, { stiffness: 200, damping: 100 });
   const mouseY = useSpring(0, { stiffness: 200, damping: 100 });
 

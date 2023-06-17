@@ -1,10 +1,11 @@
 import { Grid } from "@mui/material";
 import { BlogCardInfo } from "../../../types";
-import BlogCard from "./BlogCard";
+
 import { useQuery } from "react-query";
 import { supabase } from "../../../App";
 import { useState } from "react";
-import Loading from "../../../components/Loading";
+
+import { Card } from "./Card";
 
 export default function BlogCardsContainer() {
   const [BlogOverviews, setBlogOverviews] = useState<BlogCardInfo[]>([]);
@@ -22,17 +23,18 @@ export default function BlogCardsContainer() {
       setBlogOverviews([...(MarkdownFiles as BlogCardInfo[])]);
     }
   );
-
+  const loadingCards = new Array(9).fill(undefined);
+  console.log("loadingcards", loadingCards);
+  console.log("isloadingIn container", isLoading);
   return (
     <>
-      <Loading isLoading={isLoading || BlogOverviews.length === 0} />
       {error && <div>{(error as Error).message}</div>}
       <Grid container spacing={3}>
-        {BlogOverviews.map((overview) => {
+        {(isLoading ? loadingCards : BlogOverviews).map((overview, index) => {
           return (
-            <Grid item xs={4} key={overview.title}>
+            <Grid item xs={4} key={index}>
               <div className="flex justify-center h-full">
-                <BlogCard BlogCardInfo={overview} />
+                <Card BlogCardInfo={overview} isLoading={isLoading} />
               </div>
             </Grid>
           );

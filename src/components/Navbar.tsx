@@ -13,6 +13,9 @@ export default function Navbar() {
         <Link to="/create-blog" className="hover:text-zinc-400">
           Create
         </Link>
+        <Link to="/project" className="hover:text-zinc-400">
+          Project
+        </Link>
         <Link to="/signup" className="hover:text-zinc-400">
           SignUp
         </Link>

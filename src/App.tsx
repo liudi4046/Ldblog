@@ -24,6 +24,7 @@ import Auth from "./pages/auth";
 import { createContext } from "react";
 import UserProvider from "./context/UserProvider";
 import JourneyTimeLine from "./pages/timeLine";
+import Project from "./pages/project";
 
 const queryClient = new QueryClient();
 export const UserContext = createContext(null);
@@ -78,6 +79,7 @@ function App() {
         <Route path="blog/:id" element={<BlogDetail />} />
         <Route path="contact" element={<Contact />} />
         <Route path="create-blog" element={<CreateBlog />} />
+        <Route path="project" element={<Project />} />
         <Route path="signup" element={<Auth />} />
         <Route path="timeline" element={<JourneyTimeLine />} />
         <Route path="*" element={<PageNotFound />} />
